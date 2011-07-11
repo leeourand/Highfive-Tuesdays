@@ -1,0 +1,25 @@
+<%= form_for(@highfife) do |f| %>
+  <% if @highfife.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@highfife.errors.count, "error") %> prohibited this highfife from being saved:</h2>
+
+      <ul>
+      <% @highfife.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :user1_id %><br />
+    <%= f.number_field :user1_id %>
+  </div>
+  <div class="field">
+    <%= f.label :user2_id %><br />
+    <%= f.number_field :user2_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
