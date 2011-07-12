@@ -1,10 +1,10 @@
-<%= form_for(@highfife) do |f| %>
-  <% if @highfife.errors.any? %>
+<%= form_for(@highfive) do |f| %>
+  <% if @highfive.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@highfife.errors.count, "error") %> prohibited this highfife from being saved:</h2>
+      <h2><%= pluralize(@highfive.errors.count, "error") %> prohibited this highfive from being saved:</h2>
 
       <ul>
-      <% @highfife.errors.full_messages.each do |msg| %>
+      <% @highfive.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
@@ -12,14 +12,10 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :user1_id %><br />
-    <%= f.number_field :user1_id %>
-  </div>
-  <div class="field">
-    <%= f.label :user2_id %><br />
-    <%= f.number_field :user2_id %>
+    <%= f.label :user2_id, "Who did you high five?" %><br />
+    <%= f.select :user2_id, options_from_collection_for_select(User.all, :id, :username) %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Claim High Five" %>
   </div>
 <% end %>

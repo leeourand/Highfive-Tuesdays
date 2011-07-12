@@ -9,17 +9,17 @@
     <th></th>
   </tr>
 
-<% @highfives.each do |highfife| %>
+<% @highfives.each do |highfive| %>
   <tr>
-    <td><%= highfife.user1_id %></td>
-    <td><%= highfife.user2_id %></td>
-    <td><%= link_to 'Show', highfife %></td>
-    <td><%= link_to 'Edit', edit_highfife_path(highfife) %></td>
-    <td><%= link_to 'Destroy', highfife, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= highfive.user1.username %></td>
+    <td><%= highfive.user2.username %></td>
+    <td><%= link_to 'Show', highfive %></td>
+    <td><%= link_to 'Edit', edit_highfive_path(highfive) %></td>
+    <td><%= link_to 'Destroy', highfive, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Highfive', new_highfife_path %>
+<%= link_to 'New Highfive', new_highfive_path %>
