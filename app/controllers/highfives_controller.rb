@@ -1,4 +1,6 @@
 class HighfivesController < ApplicationController
+  before_filter :authenticate, :except => [:index, :show]
+  
   # GET /highfives
   # GET /highfives.json
   def index

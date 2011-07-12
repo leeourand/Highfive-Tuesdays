@@ -3,6 +3,8 @@ Highfives::Application.routes.draw do
   resources :sessions
   resources :users
   root :to => "users#new"
+  match '/logout' => 'sessions#destroy'
+  match '/login' => 'sessions#new'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
