@@ -13,17 +13,6 @@ class HighfivesController < ApplicationController
     end
   end
 
-  # GET /highfives/1
-  # GET /highfives/1.json
-  def show
-    @highfive = Highfive.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render :json => @highfive }
-    end
-  end
-
   # GET /highfives/new
   # GET /highfives/new.json
   def new
@@ -33,11 +22,6 @@ class HighfivesController < ApplicationController
       format.html # new.html.erb
       format.json { render :json => @highfive }
     end
-  end
-
-  # GET /highfives/1/edit
-  def edit
-    @highfive = Highfive.find(params[:id])
   end
 
   # POST /highfives
@@ -57,21 +41,6 @@ class HighfivesController < ApplicationController
     end
   end
 
-  # PUT /highfives/1
-  # PUT /highfives/1.json
-  def update
-    @highfive = Highfive.find(params[:id])
-
-    respond_to do |format|
-      if @highfive.update_attributes(params[:highfive])
-        format.html { redirect_to @highfive, :notice => 'Highfive was successfully updated.' }
-        format.json { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.json { render :json => @highfive.errors, :status => :unprocessable_entity }
-      end
-    end
-  end
 
   # DELETE /highfives/1
   # DELETE /highfives/1.json
