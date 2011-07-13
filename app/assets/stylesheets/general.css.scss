@@ -45,7 +45,7 @@ ul#nav {
 	float: left;
 	background: darken($primary, 25%);
 	margin: 0;
-	margin-top: 8em;
+	margin-top: 7em;
 	padding: 1em;
 	list-style: none;
 	@include border-left-radius(0.5em);
@@ -138,6 +138,13 @@ table {
 		color: #FFF;
 		text-align: left;
 	}
+}
+
+div#footer {
+	font-size: 0.75em;
+	margin-top: 2em;
+	color: #999;
+	text-align: center;
 }
 
 p.special {

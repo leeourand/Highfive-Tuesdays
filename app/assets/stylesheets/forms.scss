@@ -8,7 +8,10 @@ input, textarea, select {
 		border: 2px solid #333;
     background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#ccc));
     -webkit-appearance: none;
+		-moz-appearance: none;
 	   -webkit-box-shadow: 1px 1px 1px #fff;
+		 -moz-box-shadow: 1px 1px 1px #fff;
+		 -moz-border-radius: 0.5em;
 	   -webkit-border-radius: 0.5em;
 	 }
 	 
