@@ -1,11 +1,16 @@
 <p>
   <b>User1:</b>
-  <%= @highfive.user1_id %>
+  <%= @highfive.user1.username %>
 </p>
 
 <p>
   <b>User2:</b>
-  <%= @highfive.user2_id %>
+  <%= @highfive.user2.username %>
+</p>
+
+<p>
+	<b>When?:</b>
+	<%= time_ago_in_words(@highfive.created_at) %> ago
 </p>
 
 
