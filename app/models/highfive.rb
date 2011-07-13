@@ -5,4 +5,6 @@ class Highfive < ActiveRecord::Base
   
   belongs_to :user2,
              :class_name => "User"
+             
+  scope :recent, :order => "id desc", :limit => 10
 end

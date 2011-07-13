@@ -4,8 +4,9 @@ class HighfivesController < ApplicationController
   # GET /highfives
   # GET /highfives.json
   def index
-    @highfives = Highfive.all
-
+    @recent = Highfive.recent
+    @leaders = User.leaders
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render :json => @highfives }

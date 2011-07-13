@@ -1,21 +1,16 @@
-<h2>Listing highfives</h2>
-
+<h2>Leader Board</h2>
 <table>
   <tr>
-    <th>High Fiver</th>
-    <th>High Fivee</th>
-    <th></th>
-    <th></th>
-    <th></th>
+	<th>Place</th>
+    <th>User</th>
+    <th>Highfives Given</th>
   </tr>
 
-<% @highfives.each do |highfive| %>
+<% @leaders.each_with_index do |leader, index| %>
   <tr>
-    <td><%= highfive.user1.username %></td>
-    <td><%= highfive.user2.username %></td>
-    <td><%= link_to 'Show', highfive %></td>
-    <td><%= link_to 'Edit', edit_highfive_path(highfive) %></td>
-    <td><%= link_to 'Destroy', highfive, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= (index + 1).ordinalize %></td>
+    <td><%= leader.username %></td>
+    <td><%= leader.highfives.count %></td>
   </tr>
 <% end %>
 </table>

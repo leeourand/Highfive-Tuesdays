@@ -7,4 +7,9 @@ class User < ActiveRecord::Base
     Highfive.where("user1_id = ? or user2_id = ?", id, id)
   end
   
+  def self.leaders
+    users = User.all
+    users.sort! { |a,b| b.highfives.count <=> a.highfives.count}
+  end
+  
 end
