@@ -6,6 +6,14 @@
 	border-radius: $radius;
 }
 
+@mixin box-shadow($distance) {
+	-webkit-box-shadow: $distance $distance $distance darken($primary, 23%);
+	-moz-box-shadow: $distance $distance $distance darken($primary, 23%);
+	-o-box-shadow: $distance $distance $distance darken($primary, 23%);
+	-ms-box-shadow: $distance $distance $distance darken($primary, 23%);
+	box-shadow: $distance $distance $distance darken($primary, 23%);
+}
+
 @mixin border-left-radius($radius) {
 	-webkit-border-top-left-radius: $radius;
 	-webkit-border-bottom-left-radius: $radius;
@@ -19,7 +27,7 @@
 	border-bottom-left-radius: $radius;
 }
 
-$primary: #AA0000;
+$primary: #00AAAA;
 
 html {
 	background: $primary;
@@ -37,6 +45,7 @@ div#main {
 	margin: 1em auto;
 	padding: 0.8em;
 	@include border-radius(1em);
+	@include box-shadow(0.5em);
 	float: left;
 }
 
@@ -64,6 +73,7 @@ ul#nav li a {
 	
 	&:hover {
 		color: #FF0;
+		background: transparent;
 	}
 }
 
