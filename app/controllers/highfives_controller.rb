@@ -32,7 +32,7 @@ class HighfivesController < ApplicationController
 
     respond_to do |format|
       if @highfive.save
-        format.html { redirect_to @highfive, :notice => 'Highfive was successfully created.' }
+        format.html { redirect_to highfives_path, :notice => 'Highfive was successfully created.' }
         format.json { render :json => @highfive, :status => :created, :location => @highfive }
       else
         format.html { render :action => "new" }

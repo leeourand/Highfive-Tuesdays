@@ -7,7 +7,7 @@
   </tr>
 
 <% @leaders.each_with_index do |leader, index| %>
-  <tr>
+  <tr class="<%= cycle("even", "odd") %>">
     <td><%= (index + 1).ordinalize %></td>
     <td><%= leader.username %></td>
     <td><%= leader.highfives.count %></td>

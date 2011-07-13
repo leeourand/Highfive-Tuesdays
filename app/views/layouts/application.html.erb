@@ -7,6 +7,18 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+	<ul id="nav">
+		<li><a href="/highfives">Leader Board</a></li>
+		<% if current_user %>
+		<li><a href="/highfives/new">Claim Highfive</a></li>
+		<li><a href="/users">User List</a></li>
+		<li><a href="/logout">Logout</a></li>
+		<% else %>
+		<li><a href="/">Login</a></li>
+		<% end %>
+		<li>
+	</ul>
+	<div id="main">
 	<h1>Highfive Tuesdays</h1>
 	<% if notice %>
 	<p id="notice"><%= notice %></p>
@@ -15,5 +27,6 @@
 	<p id="alert"><%= alert %></p>
 	<% end %>
 	<%= yield %>
+	</div>
 </body>
 </html>

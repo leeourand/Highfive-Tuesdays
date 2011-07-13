@@ -14,4 +14,8 @@ class User < ActiveRecord::Base
     users.sort! { |a,b| b.highfives.count <=> a.highfives.count}
   end
   
+  def self.highfiveable(current_user)
+    users = User.where("id != ?", current_user.id)
+  end
+  
 end

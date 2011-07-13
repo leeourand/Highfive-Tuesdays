@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= f.label :user2_id, "Who did you high five?" %><br />
-    <%= f.select :user2_id, options_from_collection_for_select(User.all, :id, :username) %>
+    <%= f.select :user2_id, options_from_collection_for_select(User.highfiveable(current_user), :id, :username) %>
   </div>
   <div class="actions">
     <%= f.submit "Claim High Five" %>

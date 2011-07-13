@@ -1,17 +1,15 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>Username:</b>
-  <%= @user.username %>
-</p>
-
-<p>
-  <b>Email:</b>
-  <%= @user.email %>
-</p>
-
-
 <% if @user == current_user %>
-<%= link_to 'Edit Profile', edit_user_path(@user) %> |
+<p>This is you! <%= link_to 'Edit Your Profile', edit_user_path(@user) %>
 <% end %>
+<h2><%= @user.username %></h2>
+<p class="special"><%= @user.username %> has highfived <%= @user.highfives.count %> times.</p>
+<h3><%= @user.username %>'s Recent Highfives</h3>
+<ul>
+	<% for highfive in @highfives %>
+		<li><%= highfive.user1.username %> gave <%= highfive.user2.username %> a highfive <%= time_ago_in_words(highfive.created_at)%> ago.</li>
+	<% end %>
+	<% if @highfives.empty? %>
+	<li><%= @user.username %> hasn't participated in any highfives!</li>
+	<% end %>
+</ul>
 <%= link_to 'Back', users_path %>
