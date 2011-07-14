@@ -27,8 +27,8 @@ class HighfivesController < ApplicationController
   # POST /highfives
   # POST /highfives.json
   def create
-    params[:highfive][:user1_id] = current_user
-    @highfive = Highfive.new(params[:highfive])
+      @highfive = Highfive.new(params[:highfive])
+		@highfive.user1 = current_user
 
     respond_to do |format|
       if @highfive.save
