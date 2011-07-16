@@ -27,7 +27,8 @@
 	border-bottom-left-radius: $radius;
 }
 
-$primary: #00AAAA;
+$primary: #004488;
+
 
 html {
 	background: $primary;
@@ -72,7 +73,7 @@ ul#nav li a {
 	text-shadow: #000 1px 0 0;
 	
 	&:hover {
-		color: #FF0;
+                color: lighten(adjust-hue($primary, 180deg), 40%);
 		background: transparent;
 	}
 }
