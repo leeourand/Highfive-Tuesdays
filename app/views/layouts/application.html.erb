@@ -2,8 +2,12 @@
 <html>
 <head>
   <title>Highfive Tuesdays!</title>
+  <script type="text/javascript">
+    var userid = <%= current_user.id if current_user %>;
+  </script>
   <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag "http://localhost:9292/faye.js" %>
   <%= csrf_meta_tags %>
 </head>
 <body>

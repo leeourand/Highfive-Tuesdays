@@ -32,6 +32,9 @@ class HighfivesController < ApplicationController
 
     respond_to do |format|
       if @highfive.save
+        # Send push notification to highfive recipient
+        message = "#{current_user.username} has claimed a highfive with you"
+        broadcast("/messages/#{@highfive.user2.id}", message)
         format.html { redirect_to highfives_path, :notice => 'Highfive was successfully created.' }
         format.json { render :json => @highfive, :status => :created, :location => @highfive }
       else
