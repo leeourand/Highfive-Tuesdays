@@ -4,7 +4,7 @@ class HighfivesController < ApplicationController
   # GET /highfives
   # GET /highfives.json
   def index
-    @recent = Highfive.recent
+    @recent = Highfive.recent.approved
     @leaders = User.leaders
     
     respond_to do |format|
@@ -23,17 +23,24 @@ class HighfivesController < ApplicationController
       format.json { render :json => @highfive }
     end
   end
-
+  
+  # GET /highfives/edit/1
+  # GET /highfives/edit/1.json
+  def edit
+    @highfive = Highfive.find(params[:id])
+    render :layout => false
+  end
+  
   # POST /highfives
   # POST /highfives.json
   def create
-      @highfive = Highfive.new(params[:highfive])
+    @highfive = Highfive.new(params[:highfive])
 		@highfive.user1 = current_user
 
     respond_to do |format|
       if @highfive.save
         # Send push notification to highfive recipient
-        message = "#{current_user.username} has claimed a highfive with you"
+        message = @highfive.id
         broadcast("/messages/#{@highfive.user2.id}", message)
         format.html { redirect_to highfives_path, :notice => 'Highfive was successfully created.' }
         format.json { render :json => @highfive, :status => :created, :location => @highfive }
@@ -43,13 +50,19 @@ class HighfivesController < ApplicationController
       end
     end
   end
+  
+  def update
+    @highfive = Highfive.find(params[:id])
+    @highfive.approved = true
+    @highfive.save if @highfive.user2 == current_user
+  end
 
 
   # DELETE /highfives/1
   # DELETE /highfives/1.json
   def destroy
     @highfive = Highfive.find(params[:id])
-    @highfive.destroy
+    @highfive.destroy if @highfive.user2 == current_user
 
     respond_to do |format|
       format.html { redirect_to highfives_url }

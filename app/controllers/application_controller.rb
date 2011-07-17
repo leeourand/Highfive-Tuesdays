@@ -5,9 +5,13 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
   
+  def unapproved_highfives?
+    current_user.unapproved_highfives if current_user
+  end
+  
   def broadcast(channel, data)
     message = {:channel => channel, :data => data}
-    uri = URI.parse("http://localhost:9292/faye")
+    uri = URI.parse("#{faye_uri}/faye")
     Net::HTTP.post_form(uri, :message => message.to_json)
   end
   
@@ -15,7 +19,7 @@ class ApplicationController < ActionController::Base
     Rails.configuration.faye_uri
   end
   
-  helper_method :current_user, :broadcast, :faye_uri
+  helper_method :current_user, :broadcast, :faye_uri, :unapproved_highfives?
   
   private
   def authenticate

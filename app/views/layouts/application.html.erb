@@ -4,6 +4,9 @@
   <title>Highfive Tuesdays!</title>
   <script type="text/javascript">
     var userid = <%= current_user.id if current_user %>;
+	<% if unapproved_highfives? %>
+    var unapproved = <%= unapproved_highfives?.collect(&:id).to_json %>
+	<% end %>
   </script>
   <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "application" %>
@@ -12,10 +15,10 @@
 </head>
 <body>
 	<ul id="nav">
-		<li><a href="/highfives">Leader Board</a></li>
+		<li><a href="/leaderboard">Leader Board</a></li>
 		<% if current_user %>
-		<li><a href="/highfives/new">Claim Highfive</a></li>
-		<li><a href="/users">User List</a></li>
+		<li><%= link_to "Claim Highfive", new_highfive_path %></li>
+		<li><%= link_to "User List", users_path %></li>
 		<li><a href="/logout">Logout</a></li>
 		<% else %>
 		<li><a href="/">Login</a></li>

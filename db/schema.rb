@@ -10,14 +10,10 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110712025824) do
+ActiveRecord::Schema.define(:version => 20110717153913) do
 
-  create_table "highfives", :force => true do |t|
-    t.integer  "user1_id"
-    t.integer  "user2_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+# Could not dump table "highfives" because of following StandardError
+#   Unknown type 'bool' for column 'approved'
 
   create_table "users", :force => true do |t|
     t.string   "username"

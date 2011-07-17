@@ -7,4 +7,5 @@ class Highfive < ActiveRecord::Base
              :class_name => "User"
              
   scope :recent, :order => "id desc", :limit => 10
+  scope :approved, where(:approved => true)
 end

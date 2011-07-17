@@ -1,6 +1,45 @@
 $(function() {
-	var faye = new Faye.Client('http://localhost:9292/faye');
+	number = 0;
+	title = document.title;
+	if(unapproved.length > 0)
+	{
+		number = unapproved.length;
+		displayPendingHighfives();
+	}
+	var faye = new Faye.Client('<%= "#{Rails.configuration.faye_uri}/faye" %>');
 	faye.subscribe("/messages/" + userid, function(data) {
-		alert(data);
-	})
+		number = number + 1;
+		displayNewHighfive(data);
+	});
+	$('body').append('<div id="overlay"></div>');
+	$('body').append('<div id="overlay_data"></div>')
 })
+
+displayPendingHighfives = function() {
+	$('#overlay').show();
+	$('#overlay_data').show();
+	for(var i=0; i<unapproved.length; i++)
+	{
+		var str = '<div id="' + unapproved[i] +'"></div>';
+		$("div#overlay_data").append(str);
+		$("div#overlay_data div#" + unapproved[i]).load("/highfives/" + unapproved[i] + "/edit");
+		$("div#overlay_data div#" + unapproved[i] + "input").click(function() {
+			$("div#overlay_data div#" + unapproved[i]).hide();
+			number = number - 1;
+			if (number == 0)
+			{
+				$("div#overlay_data").hide();
+				$("div#overlay").hide();
+			}
+		})
+	}
+};
+
+displayNewHighfive = function(data) {
+	$('#overlay').show();
+	$('#overlay_data').show();
+	document.title = title + " - Unapproved (" + number + ")"
+	var str = '<div id="' + data + '"></div>';
+	$("div#overlay_data").append(str);
+	$("div#overlay_data div#" + data).load("/highfives/" + data + "/edit");
+};
