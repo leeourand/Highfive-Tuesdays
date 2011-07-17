@@ -7,7 +7,7 @@
   </script>
   <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "application" %>
-  <%= javascript_include_tag "http://localhost:9292/faye.js" %>
+  <%= javascript_include_tag "#{faye_uri}/faye.js" %>
   <%= csrf_meta_tags %>
 </head>
 <body>

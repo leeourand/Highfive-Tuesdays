@@ -11,7 +11,11 @@ class ApplicationController < ActionController::Base
     Net::HTTP.post_form(uri, :message => message.to_json)
   end
   
-  helper_method :current_user, :broadcast
+  def faye_uri
+    Rails.configuration.faye_uri
+  end
+  
+  helper_method :current_user, :broadcast, :faye_uri
   
   private
   def authenticate
