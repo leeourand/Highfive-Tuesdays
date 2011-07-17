@@ -1,6 +1,9 @@
 $(function() {
 	number = 0;
 	title = document.title;
+	$('body').append('<div id="overlay"></div>');
+	$('body').append('<div id="overlay_data"></div>')
+	
 	if(unapproved.length > 0)
 	{
 		number = unapproved.length;
@@ -11,8 +14,6 @@ $(function() {
 		number = number + 1;
 		displayNewHighfive(data);
 	});
-	$('body').append('<div id="overlay"></div>');
-	$('body').append('<div id="overlay_data"></div>')
 })
 
 displayPendingHighfives = function() {
