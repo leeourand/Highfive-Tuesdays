@@ -42,7 +42,7 @@ class HighfivesController < ApplicationController
         # Send push notification to highfive recipient
         message = @highfive.id
         broadcast("/messages/#{@highfive.user2.id}", message)
-        format.html { redirect_to highfives_path, :notice => 'Highfive was successfully submitted. Awaiting confirmation from #{@highfive.user2.username}.' }
+        format.html { redirect_to highfives_path, :notice => 'Highfive was successfully submitted. Awaiting confirmation from "#{@highfive.user2.username}".' }
         format.json { render :json => @highfive, :status => :created, :location => @highfive }
       else
         format.html { render :action => "new" }
