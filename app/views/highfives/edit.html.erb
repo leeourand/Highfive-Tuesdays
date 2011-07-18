@@ -9,7 +9,6 @@ $("div#<%= @highfive.id %> input[type='submit']").click(function() {
 	$("div#<%= @highfive.id %>").hide();
 	number = number - 1;
 	if(number <= 0) {
-		window.location.reload();
 		$("div#overlay").hide();
 		$("div#overlay_data").hide();
 	}
