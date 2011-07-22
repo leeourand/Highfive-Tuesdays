@@ -11,6 +11,6 @@ class Highfive < ActiveRecord::Base
   scope :approved, where(:approved => true)
 
   def is_not_a_self_highfive
-    errors.add(:base, "You can't highfive yourself!") if @user1_id == @user2_id
+    errors.add(:base, "You can't highfive yourself!") if (self.user1_id == self.user2_id)
   end
 end
