@@ -15,6 +15,7 @@
 </head>
 <body>
 	<ul id="nav">
+		<li><a href="/pages/about">About</a></li>
 		<li><a href="/leaderboard">Leader Board</a></li>
 		<% if current_user %>
 		<li><%= link_to "Claim Highfive", new_highfive_path %></li>
@@ -26,7 +27,7 @@
 		<li>
 	</ul>
 	<div id="main">
-	<h1>Highfive Tuesdays</h1>
+	<h1 id="header">Highfive Tuesdays</h1>
 	<% if notice %>
 	<p id="notice"><%= notice %></p>
 	<% end %>

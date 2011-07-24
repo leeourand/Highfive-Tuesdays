@@ -29,7 +29,6 @@
 
 $primary: #004488;
 
-
 html {
 	background: $primary;
 }
@@ -45,6 +44,7 @@ div#main {
 	width: 40em;
 	margin: 1em auto;
 	padding: 0.8em;
+	padding-top: 0;
 	@include border-radius(1em);
 	@include box-shadow(0.5em);
 	float: left;
@@ -84,10 +84,16 @@ body, p, ol, ul, td {
   line-height: 1.5em;
 }
 
-h1 {
+h1#header {
 	font-size: 3em;
 	font-family: Georgia, "Times new roman", serif;
 	color: darken($primary, 10%);
+	padding-left: 135px;
+	padding-top: 65px;
+	height: 65px;
+	background: url(/assets/logo.gif) left center no-repeat;
+	padding-bottom: 0.4em;
+	border-bottom: 3px dashed #888;
 }
 
 pre {

@@ -1,5 +1,7 @@
 Highfives::Application.routes.draw do
 
+  get "pages/about"
+
   resources :users 
   resources :highfives
   resources :sessions
