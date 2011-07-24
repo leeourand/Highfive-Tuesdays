@@ -1,7 +1,9 @@
 Highfives::Application.routes.draw do
+
   resources :users 
   resources :highfives
   resources :sessions
+  resources :password_resets
   root :to => "sessions#new"
   match '/logout' => 'sessions#destroy'
   match '/login' => 'sessions#new'

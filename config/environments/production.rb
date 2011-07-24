@@ -52,4 +52,6 @@ Highfives::Application.configure do
   
   # Set the faye server rui
   config.faye_uri = "http://highfivetuesdays.com:9292"
+  config.action_mailer.default_url_options = { :host => "highfivetuesdays.com" }  
+  
 end

@@ -24,4 +24,6 @@ Highfives::Application.configure do
   
   # Set the Faye server URI
   config.faye_uri = "http://localhost:9292"
+  config.action_mailer.default_url_options = { :host => "localhost:3000" }  
+  
 end
