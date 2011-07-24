@@ -35,14 +35,14 @@ class HighfivesController < ApplicationController
   # POST /highfives.json
   def create
     @highfive = Highfive.new(params[:highfive])
-		@highfive.user1 = current_user
+    @highfive.user1 = current_user
 
     respond_to do |format|
       if @highfive.save
         # Send push notification to highfive recipient
         message = @highfive.id
         broadcast("/messages/#{@highfive.user2.id}", message)
-        format.html { redirect_to highfives_path, :notice => 'Highfive was successfully created.' }
+        format.html { redirect_to highfives_path, :notice => "Highfive was successfully submitted. Awaiting confirmation from #{@highfive.user2.username}." }
         format.json { render :json => @highfive, :status => :created, :location => @highfive }
       else
         format.html { render :action => "new" }
