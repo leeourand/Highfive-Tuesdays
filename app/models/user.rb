@@ -26,6 +26,10 @@ class User < ActiveRecord::Base
     end while User.exists?(column => self[column])
   end
   
+  def self.pair_count(user1_id, user2_id)
+    Highfive.where("(user1_id = ? and user2_id = ?) or (user1_id = ? and user2_id = ?)", user1_id, user2_id, user2_id, user1_id).count
+  end
+  
   def self.leaders
     users = User.all
     users.sort! { |a,b| b.highfives.count <=> a.highfives.count}

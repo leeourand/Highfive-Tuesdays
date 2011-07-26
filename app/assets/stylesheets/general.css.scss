@@ -194,7 +194,7 @@ p.special {
   
   ul li {
     font-size: 12px;
-    list-style: square;
+    list-style: square inside;
   }
 }
 
@@ -243,7 +243,7 @@ div.edit_highfive:after {
 
 div#overlay_data {
 	position: absolute;
-	z-index: 2;
+	z-index: 30;
 	opacity: 1.5;
 	background: #D4D4D4;
 	color: #000;
@@ -265,4 +265,5 @@ div#overlay {
 	height: 100%;
 	color: #FFF;
 	display: none;
+	z-index: 29;
 }
