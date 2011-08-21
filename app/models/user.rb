@@ -33,6 +33,7 @@ class User < ActiveRecord::Base
   def self.leaders
     users = User.all
     users.sort! { |a,b| b.highfives.count <=> a.highfives.count}
+    users[0..9]
   end
   
   def self.highfiveable(current_user)
